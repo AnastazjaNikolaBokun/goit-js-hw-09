@@ -16,3 +16,37 @@ img {
   display: block;
   max-width: 100%;
 }
+
+#datetime-picker {
+  position: relative;
+  left: 41%;
+  display: flex;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 50%;
+  border-color: black;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.button-timer {
+  position: relative;
+  left: 48.5%;
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  font-size: 50px;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.value {
+  padding-right: 10px;
+  color: darkviolet
+}
