@@ -1,19 +1,19 @@
 let body = document.querySelector('body');
-const start = document.querySelector('button[data-start]');
-const stop = document.querySelector('button[data-stop]');
+const startButton = document.querySelector('button[data-start]');
+const stopButton = document.querySelector('button[data-stop]');
 
-start.addEventListener('click', () => {
+startButton.addEventListener('click', () => {
   timerId = setInterval(() => {
     let change = `#${Math.floor(Math.random() * 16777215)
       .toString(16)
       .padStart(6, 0)}`;
     console.log(change);
-    start.disabled = true;
+    startButton.disabled = true;
     body.style.backgroundColor = `${change}`;
   }, 1000);
 });
 
-stop.addEventListener('click', () => {
+stopButton.addEventListener('click', () => {
   clearInterval(timerId);
-  start.disabled = false;
+  startButton.disabled = false;
 });

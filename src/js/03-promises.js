@@ -1,53 +1,36 @@
 const form = document.querySelector('.form');
 
-form.addEventListener('submit', handleSubmit);
-
-function handleSubmit(event) {
+const createPromises = event => {
   event.preventDefault();
-  const {
-    elements: { delay2, step, amount },
+  let {
+    elements: { delay, step, amount },
   } = event.currentTarget;
-  const clickDate = new Date();
-
-  const promises = [];
-  for (let i = amount.value; i > 0; i--) {
-    promises.push(i);
-  }
-  setTimeout(() => {
-    setTimeout(() => {
-      promises.forEach(function (e) {
-        function createPromise(position, delay) {
-          return new Promise((resolve, reject) => {
-            function countDown(count) {
-              position = e;
-              const positionDate = new Date();
-              delay = positionDate.getTime() - clickDate.getTime();
-              const shouldResolve = Math.random() > 0.3;
-
-              if (shouldResolve) {
-                resolve({ position, delay });
-              } else {
-                reject({ position, delay });
-              }
-
-              if (count > 0) {
-                countDown(count - 1);
-              }
-            }
-            countDown(amount.value);
-          });
-        }
-        createPromise(this.position, this.delay)
-          .then(({ position, delay }) => {
-            console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-          })
-          .catch(({ position, delay }) => {
-            console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-          });
-      });
-    }, step.value);
-  }, delay2.value);
+  let tempDelay = Number(delay.value);
+  for (let i = 1; i <= amount.value; i += 1) {
+if (i > 1) {
+  tempDelay += Number(step.value);
 }
+    createPromise(i, tempDelay).then(onSuccess).catch(onFail);
+  }
+};
+
+const createPromise = (position, delay) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const shouldResolve = Math.random() > 0.3;
+      shouldResolve ? resolve({position, delay}) : reject({position, delay});
+    }, delay);
+  });
+};
+
+function onSuccess({position, delay}) {
+  console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+};
+
+function onFail({position, delay}) {
+  console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+};
+form.addEventListener('submit', createPromises);
 // const elements = {
 //   delay: delay.value,
 //   step: step.value,
