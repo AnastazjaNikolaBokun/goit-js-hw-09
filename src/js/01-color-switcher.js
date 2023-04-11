@@ -11,11 +11,9 @@ startButton.addEventListener('click', () => {
     startButton.disabled = true;
     body.style.backgroundColor = `${change}`;
   }, 1000);
-
-  stopButton.addEventListener('click', () => {
-    clearInterval(timerId);
-    startButton.disabled = false;
-  });
-  
 });
 
+stopButton.addEventListener('click', () => {
+  clearInterval(timerId);
+  startButton.disabled = false;
+});
