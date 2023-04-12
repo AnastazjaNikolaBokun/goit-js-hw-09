@@ -3,7 +3,7 @@ const startButton = document.querySelector('button[data-start]');
 const stopButton = document.querySelector('button[data-stop]');
 
 startButton.addEventListener('click', () => {
-  timerId = setInterval(() => {
+  let timerId = setInterval(() => {
     let change = `#${Math.floor(Math.random() * 16777215)
       .toString(16)
       .padStart(6, 0)}`;
@@ -11,9 +11,9 @@ startButton.addEventListener('click', () => {
     startButton.disabled = true;
     body.style.backgroundColor = `${change}`;
   }, 1000);
+  stopButton.addEventListener('click', () => {
+    clearInterval(timerId);
+    startButton.disabled = false;
+  });
 });
 
-stopButton.addEventListener('click', () => {
-  clearInterval(timerId);
-  startButton.disabled = false;
-});

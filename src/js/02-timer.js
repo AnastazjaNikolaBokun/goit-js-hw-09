@@ -24,7 +24,7 @@ flatpickr(input, {
     } else {
       start.disabled = false;
       start.addEventListener('click', () => {
-        timerId = setInterval(() => {
+        let timerId = setInterval(() => {
           let ms = selectedDates[0] - new Date();
           function convertMs(ms) {
             const second = 1000;
