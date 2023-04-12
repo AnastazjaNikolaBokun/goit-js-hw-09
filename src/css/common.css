@@ -17,9 +17,12 @@ img {
   max-width: 100%;
 }
 
+.container {
+  width: 1200px;
+}
+
 #datetime-picker {
-  position: relative;
-  left: 41%;
+  margin: 0 auto;
   display: flex;
   border-style: solid;
   border-width: 10px;
@@ -31,8 +34,13 @@ img {
 }
 
 .button-timer {
-  position: relative;
-  left: 48.5%;
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  font-family: fantasy;
+  text-transform: uppercase;
+  background-color: pink;
 }
 
 .field {

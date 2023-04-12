@@ -50,8 +50,13 @@ flatpickr(input, {
             }
           });
 
-          if (ms < 1000) {
+          if (ms < 10) {
             clearInterval(timerId);
+            window.alert("BOOM!");
+            textDays.textContent = "00";
+            textHours.textContent = "00";
+            textMinutes.textContent = "00";
+            textSeconds.textContent = "00";
           }
         }, 1000);
       });
